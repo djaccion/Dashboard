@@ -1,75 +1,24 @@
-# Dependencies
-node_modules/
-**/node_modules/
-
-# ==============================================================================
-# SECURITY CRITICAL: NEVER commit any .env file under any circumstances.
-# These files contain JWT secrets, CORS credentials and other sensitive data.
-# ==============================================================================
-
-# Environment Variables and Secrets
+# Environment
 .env
 .env.local
-.env.development
-.env.test
-.env.production
-.env.staging
+.env.*.local
 
-# Build and Compilation Output
-dist/
-build/
+# Dependencies
+node_modules/
 
 # Logs
-*.log
 logs/
+*.log
 
-# Test Coverage
-coverage/
-.nyc_output/
-
-# Operating System Files
-# macOS
+# OS artifacts
 .DS_Store
-._*
-# Windows
 Thumbs.db
-desktop.ini
-# Linux
-.directory
 
-# IDEs and Editors
-# VSCode
+# Editor artifacts
 .vscode/
-!.vscode/extensions.json
-# IntelliJ / WebStorm
 .idea/
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-# Vim
 *.swp
 *.swo
 
-# Docker
-docker-compose.override.yml
-
-# Temporary Files and Cache
-.cache/
-*.tmp
-*.temp
-.npm/
-.eslintcache
-.prettier_cache
-
-# Certificates and Keys
-*.pem
-*.key
-*.cert
-*.crt
-*.p12
-*.pfx
-
-# Test Reports and Analysis
-reports/
-test-results/
-junit.xml
+# Coverage
+coverage/

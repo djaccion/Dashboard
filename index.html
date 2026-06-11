@@ -3,133 +3,389 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explora metodologías de informática y TI: Agile, Scrum, Kanban, DevOps y más. Historias, noticias y recursos editoriales.">
-  <!-- CSP: unsafe-inline requerido exclusivamente para snippet GA4 inline -->
+  <meta name="description" content="Explora metodologías de informática y TI: Scrum, Kanban, ITIL y más. Historias, noticias y recursos editoriales para profesionales TI.">
+
+  <title>Metodologías TI</title>
+
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
-                 script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline';
+                 script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net 'unsafe-inline';
                  style-src 'self' 'unsafe-inline';
-                 img-src 'self' data: https://placehold.co;
+                 img-src 'self' https://placehold.co data:;
                  connect-src https://www.google-analytics.com;">
-  <title>Metodologías TI</title>
-  <link rel="stylesheet" href="./assets/css/styles.css">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- DOMPurify desde CDN — SRI omitido intencionalmente: el hash real debe obtenerse
+       de https://www.srihash.org/ para dompurify@3.1.6 antes de desplegar a producción.
+       Placeholder: integrity="sha384-REEMPLAZAR-CON-HASH-REAL-DE-SRIHASH-ORG" -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"
+          crossorigin="anonymous"></script>
+
+  <!-- Google Analytics GA4 — snippet estándar -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
 
-  <header id="site-header">
-    <a href="#">Metodologías TI</a>
-    <button id="nav-toggle"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-            aria-controls="nav-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav aria-label="Navegación principal">
-      <ul id="nav-menu" class="nav__list is-hidden">
-        <li class="nav__item">
-          <a class="nav__link is-active" href="#" data-target="section-home">Inicio</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#" data-target="section-historias">Historias</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#" data-target="section-noticias">Noticias</a>
-        </li>
-      </ul>
-    </nav>
+  <header role="banner">
+    <div class="header-inner">
+      <a href="#home" class="site-logo" aria-label="Ir al inicio — Metodologías TI">
+        Metodologías TI
+      </a>
+
+      <nav id="nav-main" aria-label="Navegación principal">
+        <ul role="list">
+          <li>
+            <a href="#home"
+               id="nav-link-home"
+               class="nav-link is-active"
+               data-target="home"
+               aria-current="page">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#historias"
+               id="nav-link-historias"
+               class="nav-link"
+               data-target="historias">
+              Historias
+            </a>
+          </li>
+          <li>
+            <a href="#noticias"
+               id="nav-link-noticias"
+               class="nav-link"
+               data-target="noticias">
+              Noticias
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main-content">
 
-    <section id="section-home" aria-labelledby="home-heading">
-      <h1 id="home-heading">Metodologías de Informática y TI</h1>
+    <!-- PANEL HOME — visible por defecto, SIN atributo hidden -->
+    <section id="section-home" class="section-panel" aria-labelledby="home-heading">
+      <h1 id="home-heading">Bienvenido a Metodologías TI</h1>
       <p>
-        Bienvenido al espacio editorial dedicado a las metodologías que transforman el desarrollo de software y la gestión de proyectos tecnológicos.
-        Aquí encontrarás análisis, historias y noticias sobre Agile, Scrum, Kanban, DevOps y mucho más.
-        Explora el contenido y descubre cómo estas prácticas impulsan equipos y organizaciones hacia la mejora continua.
+        Tu referencia editorial sobre las metodologías que transforman la industria tecnológica.
+        Descubre cómo Scrum, Kanban, ITIL, DevOps y otras prácticas están redefiniendo la forma
+        en que los equipos de TI diseñan, entregan y mantienen soluciones digitales en el mundo actual.
+      </p>
+      <p>
+        Explora nuestras historias de éxito, mantente al día con las últimas noticias del sector
+        y encuentra respuestas a las preguntas más frecuentes sobre adopción de metodologías ágiles
+        y marcos de gestión de servicios TI.
       </p>
 
-      <div id="faq-container">
+      <!-- Buscador — sanitización manejada por main.js con DOMPurify -->
+      <form id="form-search" role="search" novalidate>
+        <label for="input-search">Buscar metodología</label>
+        <input type="search"
+               id="input-search"
+               name="q"
+               autocomplete="off"
+               aria-describedby="search-error-msg"
+               placeholder="Ej: Scrum, Kanban, ITIL...">
+        <button type="submit" id="btn-search-submit">Buscar</button>
+        <!-- Mensaje de error — class="is-visible" es la clase que main.js agrega cuando hay error.
+             style="display:none" es el ocultamiento inicial según el contrato del Tech Lead (Paso 3).
+             main.js gestiona la visibilidad agregando/quitando .is-visible -->
+        <span id="search-error-msg"
+              class="is-visible"
+              role="alert"
+              aria-live="polite"
+              style="display:none">
+          Por favor, introduce al menos 2 caracteres para buscar.
+        </span>
+      </form>
 
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">
-            ¿Qué es la metodología Agile?
-          </button>
-          <div class="faq__answer is-hidden">
-            <p>Agile es un conjunto de principios y valores para el desarrollo de software que prioriza la colaboración, la adaptación al cambio y la entrega continua de valor. Se basa en el Manifiesto Ágil de 2001 y engloba marcos como Scrum, Kanban y XP.</p>
-          </div>
-        </div>
+      <!-- Resultados de búsqueda — main.js inyecta contenido aquí -->
+      <div id="search-results" aria-live="polite" aria-atomic="true"></div>
+    </section>
 
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">
-            ¿Cuál es la diferencia entre Scrum y Kanban?
-          </button>
-          <div class="faq__answer is-hidden">
-            <p>Scrum organiza el trabajo en sprints de duración fija con roles definidos (Product Owner, Scrum Master, equipo de desarrollo) y ceremonias regulares. Kanban, en cambio, es un sistema de flujo continuo que visualiza el trabajo en un tablero y limita el trabajo en progreso (WIP) sin iteraciones fijas.</p>
-          </div>
-        </div>
+    <!-- PANEL HISTORIAS — oculto por defecto con atributo hidden -->
+    <section id="section-historias" class="section-panel" hidden aria-labelledby="historias-heading">
+      <h2 id="historias-heading">Historias</h2>
 
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">
-            ¿Qué es DevOps y por qué es relevante?
-          </button>
-          <div class="faq__answer is-hidden">
-            <p>DevOps es una cultura y conjunto de prácticas que integra los equipos de desarrollo (Dev) y operaciones (Ops) para acortar el ciclo de vida del software y entregar con mayor frecuencia y fiabilidad. Es relevante porque reduce silos organizacionales, automatiza procesos y mejora la calidad del producto final.</p>
-          </div>
-        </div>
+      <div class="cards-grid">
 
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">
-            ¿Qué es Lean Software Development?
-          </button>
-          <div class="faq__answer is-hidden">
-            <p>Lean Software Development adapta los principios de manufactura Lean al desarrollo de software. Se centra en eliminar desperdicios, amplificar el aprendizaje, decidir lo más tarde posible, entregar lo más rápido posible y empoderar al equipo para lograr la integridad del producto.</p>
+        <article class="card-historia">
+          <img src="https://placehold.co/600x400"
+               alt="Equipo de desarrollo aplicando Scrum en una pizarra de sprints"
+               width="600" height="400" loading="lazy">
+          <div class="card-historia__body">
+            <h3>Cómo Scrum transformó el equipo de desarrollo de una fintech</h3>
+            <p>
+              Una startup financiera con ciclos de entrega de seis meses adoptó Scrum y redujo
+              su time-to-market a tres semanas. Esta es la historia de su transformación cultural
+              y técnica, los obstáculos que enfrentaron y las lecciones que aprendieron.
+            </p>
+            <a href="#" class="card-historia__link">Leer más</a>
           </div>
-        </div>
+        </article>
 
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">
-            ¿Qué es el marco SAFe y cuándo se utiliza?
-          </button>
-          <div class="faq__answer is-hidden">
-            <p>SAFe (Scaled Agile Framework) es un marco de trabajo que permite aplicar principios Agile y Lean a escala empresarial, coordinando múltiples equipos que trabajan en un mismo producto o programa. Se utiliza cuando una organización necesita alinear decenas o cientos de equipos ágiles hacia objetivos estratégicos comunes.</p>
+        <article class="card-historia">
+          <img src="https://placehold.co/600x400"
+               alt="Tablero Kanban digital con tarjetas de tareas en progreso"
+               width="600" height="400" loading="lazy">
+          <div class="card-historia__body">
+            <h3>Kanban en operaciones: el caso de un equipo de soporte TI</h3>
+            <p>
+              El departamento de soporte de una empresa de telecomunicaciones implementó Kanban
+              para visualizar su flujo de trabajo. En tres meses, el tiempo de resolución de
+              incidencias se redujo un 40% y la satisfacción del cliente alcanzó máximos históricos.
+            </p>
+            <a href="#" class="card-historia__link">Leer más</a>
           </div>
-        </div>
+        </article>
+
+        <article class="card-historia">
+          <img src="https://placehold.co/600x400"
+               alt="Diagrama de flujo de procesos ITIL en una pantalla de sala de operaciones"
+               width="600" height="400" loading="lazy">
+          <div class="card-historia__body">
+            <h3>ITIL 4 en el sector público: modernizando la gestión de servicios</h3>
+            <p>
+              Una administración pública regional adoptó ITIL 4 para estandarizar la gestión
+              de sus servicios digitales. El proceso de certificación, los retos de cambio
+              organizacional y los resultados medibles un año después de la implementación.
+            </p>
+            <a href="#" class="card-historia__link">Leer más</a>
+          </div>
+        </article>
+
+        <article class="card-historia">
+          <img src="https://placehold.co/600x400"
+               alt="Pipeline de integración continua y despliegue continuo en pantalla de desarrollador"
+               width="600" height="400" loading="lazy">
+          <div class="card-historia__body">
+            <h3>DevOps de cero a producción: la travesía de un equipo de e-commerce</h3>
+            <p>
+              Una plataforma de comercio electrónico pasó de despliegues manuales mensuales
+              a pipelines CI/CD automatizados con múltiples releases diarios. Descubre cómo
+              estructuraron su cultura DevOps y qué herramientas eligieron en cada etapa.
+            </p>
+            <a href="#" class="card-historia__link">Leer más</a>
+          </div>
+        </article>
 
       </div>
     </section>
 
-    <section id="section-historias" class="is-hidden" aria-labelledby="historias-heading">
-      <h2 id="historias-heading">Historias</h2>
-      <div id="historias-grid" class="cards-grid"></div>
+    <!-- PANEL NOTICIAS — oculto por defecto con atributo hidden -->
+    <section id="section-noticias" class="section-panel" hidden aria-labelledby="noticias-heading">
+      <h2 id="noticias-heading">Noticias</h2>
+
+      <div class="cards-grid">
+
+        <article class="card-noticia">
+          <img src="https://placehold.co/600x400"
+               alt="Portada del informe anual del estado de Agile 2024"
+               width="600" height="400" loading="lazy">
+          <div class="card-noticia__body">
+            <h3>El informe State of Agile 2024 revela un aumento en la adopción de SAFe</h3>
+            <time datetime="2024-11-15">15 de noviembre de 2024</time>
+            <p>
+              El informe anual sobre el estado de Agile muestra que el 37% de las organizaciones
+              encuestadas han adoptado SAFe como marco de escalado, consolidándolo como el más
+              utilizado por tercer año consecutivo. Analizamos sus implicaciones para los equipos TI.
+            </p>
+            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+          </div>
+        </article>
+
+        <article class="card-noticia">
+          <img src="https://placehold.co/600x400"
+               alt="Logo de AXELOS junto al texto ITIL 4 Foundation actualización 2024"
+               width="600" height="400" loading="lazy">
+          <div class="card-noticia__body">
+            <h3>AXELOS actualiza el esquema de certificación ITIL 4 con nuevos módulos prácticos</h3>
+            <time datetime="2024-10-03">3 de octubre de 2024</time>
+            <p>
+              AXELOS ha anunciado la incorporación de tres nuevos módulos de práctica al esquema
+              ITIL 4, enfocados en gestión de activos digitales, sostenibilidad TI y resiliencia
+              de servicios. Las certificaciones actualizadas estarán disponibles desde enero de 2025.
+            </p>
+            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+          </div>
+        </article>
+
+        <article class="card-noticia">
+          <img src="https://placehold.co/600x400"
+               alt="Gráfico de tendencias de adopción de metodologías ágiles en Latinoamérica"
+               width="600" height="400" loading="lazy">
+          <div class="card-noticia__body">
+            <h3>Latinoamérica acelera la adopción de metodologías ágiles en el sector bancario</h3>
+            <time datetime="2024-09-20">20 de septiembre de 2024</time>
+            <p>
+              Un estudio regional publicado por la consultora IDC revela que el 62% de los bancos
+              latinoamericanos han iniciado transformaciones ágiles formales en los últimos dos años,
+              con Brasil y México liderando la adopción de marcos híbridos Scrum-Kanban.
+            </p>
+            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+          </div>
+        </article>
+
+        <article class="card-noticia">
+          <img src="https://placehold.co/600x400"
+               alt="Conferencia DevOps Days con ponentes en escenario"
+               width="600" height="400" loading="lazy">
+          <div class="card-noticia__body">
+            <h3>DevOps Days Madrid 2024: los cinco temas que dominaron la agenda</h3>
+            <time datetime="2024-09-05">5 de septiembre de 2024</time>
+            <p>
+              La edición madrileña de DevOps Days reunió a más de 800 profesionales TI. La IA
+              aplicada a pipelines CI/CD, la observabilidad como práctica cultural y la seguridad
+              shift-left fueron los ejes centrales de las sesiones más concurridas del evento.
+            </p>
+            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <section id="section-noticias" class="is-hidden" aria-labelledby="noticias-heading">
-      <h2 id="noticias-heading">Noticias</h2>
-      <div id="noticias-grid" class="cards-grid"></div>
+    <!-- SECCIÓN FAQ — siempre visible, no es un panel de navegación -->
+    <section id="section-faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Preguntas Frecuentes</h2>
+
+      <ul id="faq-list" role="list">
+
+        <li class="faq-item is-closed">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+            ¿Qué es una metodología ágil y en qué se diferencia de las metodologías tradicionales?
+          </button>
+          <div id="faq-answer-1" class="faq-answer" role="region">
+            <p>
+              Las metodologías ágiles son marcos de trabajo iterativos e incrementales que priorizan
+              la entrega continua de valor, la colaboración con el cliente y la adaptación al cambio.
+              A diferencia de las metodologías tradicionales (como Waterfall), que planifican todo
+              el proyecto al inicio y ejecutan en fases secuenciales, las metodologías ágiles dividen
+              el trabajo en ciclos cortos (sprints o iteraciones) que permiten ajustar el rumbo
+              basándose en feedback real y continuo.
+            </p>
+          </div>
+        </li>
+
+        <li class="faq-item is-closed">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+            ¿Cuál es la diferencia entre Scrum y Kanban?
+          </button>
+          <div id="faq-answer-2" class="faq-answer" role="region">
+            <p>
+              Scrum es un marco prescriptivo con roles definidos (Product Owner, Scrum Master, equipo
+              de desarrollo), eventos fijos (sprints de 1-4 semanas, daily standups, retrospectivas)
+              y artefactos concretos (product backlog, sprint backlog). Kanban, en cambio, es un método
+              de gestión del flujo de trabajo más flexible: visualiza el trabajo en un tablero,
+              limita el trabajo en progreso (WIP) y optimiza el flujo continuo sin sprints ni roles
+              obligatorios. Scrum es ideal para equipos de producto con backlog priorizado; Kanban
+              encaja mejor en equipos de operaciones o soporte con trabajo continuo e impredecible.
+            </p>
+          </div>
+        </li>
+
+        <li class="faq-item is-closed">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+            ¿Qué es ITIL y para qué tipo de organizaciones es relevante?
+          </button>
+          <div id="faq-answer-3" class="faq-answer" role="region">
+            <p>
+              ITIL (Information Technology Infrastructure Library) es un marco de mejores prácticas
+              para la gestión de servicios TI (ITSM). Define cómo las organizaciones deben diseñar,
+              entregar, gestionar y mejorar continuamente sus servicios tecnológicos. Es especialmente
+              relevante para departamentos TI internos, proveedores de servicios gestionados (MSP)
+              y cualquier organización donde TI sea un habilitador crítico del negocio. ITIL 4,
+              la versión actual, integra principios ágiles y DevOps para adaptarse a entornos
+              digitales modernos.
+            </p>
+          </div>
+        </li>
+
+        <li class="faq-item is-closed">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+            ¿Puedo combinar varias metodologías en un mismo equipo?
+          </button>
+          <div id="faq-answer-4" class="faq-answer" role="region">
+            <p>
+              Sí. Los enfoques híbridos son cada vez más comunes. Por ejemplo, muchos equipos usan
+              Scrum para el desarrollo de producto y Kanban para la gestión de bugs y soporte.
+              Otros combinan ITIL para la gestión de servicios con Scrum para el desarrollo interno.
+              La clave es entender qué problema resuelve cada metodología y aplicarla donde aporte
+              valor real, evitando la adopción ceremonial que genera burocracia sin beneficio.
+            </p>
+          </div>
+        </li>
+
+        <li class="faq-item is-closed">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+            ¿Qué certificaciones son más valoradas en el mercado TI actualmente?
+          </button>
+          <div id="faq-answer-5" class="faq-answer" role="region">
+            <p>
+              Las certificaciones más demandadas varían según el rol. Para gestión de proyectos ágiles:
+              Professional Scrum Master (PSM) y PMI-ACP. Para gestión de servicios TI: ITIL 4 Foundation
+              es el punto de entrada estándar. Para DevOps: las certificaciones de plataformas cloud
+              (AWS, Azure, GCP) combinadas con conocimientos de CI/CD tienen alta demanda. Para
+              escalado ágil: SAFe Agilist (SA) y LeSS Practitioner son referencias en grandes
+              organizaciones. Se recomienda priorizar la experiencia práctica sobre la acumulación
+              de certificaciones.
+            </p>
+          </div>
+        </li>
+
+      </ul>
     </section>
 
   </main>
 
-  <footer id="site-footer">
-    <p>&copy; <span id="footer-year"></span> Metodologías TI. Todos los derechos reservados.</p>
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p>
+        &copy; 2024 Metodologías TI. Contenido editorial con fines informativos.
+      </p>
+      <nav aria-label="Navegación secundaria del pie de página">
+        <ul role="list">
+          <li><a href="#home" class="nav-link" data-target="home">Inicio</a></li>
+          <li><a href="#historias" class="nav-link" data-target="historias">Historias</a></li>
+          <li><a href="#noticias" class="nav-link" data-target="noticias">Noticias</a></li>
+        </ul>
+      </nav>
+    </div>
   </footer>
 
-  <div id="cookie-banner" class="is-hidden">
-    <p class="cookie-banner__text">
-      Este sitio utiliza cookies para mejorar tu experiencia y analizar el tráfico mediante Google Analytics.
-      Al aceptar, consientes el uso de cookies de acuerdo con nuestra política de privacidad.
-    </p>
-    <div class="cookie-banner__actions">
-      <button id="cookie-accept-btn">Aceptar</button>
-      <button id="cookie-reject-btn">Rechazar</button>
+  <!-- BANNER DE COOKIES — usa .is-hidden para visibilidad (NO atributo hidden) -->
+  <div id="banner-cookies"
+       class="overlay cookie-banner"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="cookies-heading"
+       aria-describedby="cookies-desc">
+    <div class="cookie-banner__inner">
+      <h2 id="cookies-heading" class="sr-only">Aviso de cookies</h2>
+      <p id="cookies-desc">
+        Utilizamos cookies propias y de terceros (Google Analytics) para analizar el uso del sitio
+        y mejorar tu experiencia. Puedes aceptar todas las cookies o rechazar las no esenciales.
+        Consulta nuestra política de privacidad para más información.
+      </p>
+      <div class="cookie-banner__actions">
+        <button id="btn-accept-cookies" type="button">Aceptar todas</button>
+        <button id="btn-reject-cookies" type="button">Rechazar no esenciales</button>
+      </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-  <script src="./assets/js/main.js"></script>
+  <!-- ÚNICO archivo JS del proyecto -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>
