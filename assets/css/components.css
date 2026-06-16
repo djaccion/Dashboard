@@ -1,0 +1,188 @@
+/* components.css — Estilos de componentes: Cards, FAQ, Cookie Banner */
+/* PROYECTO: XP-14 | DEPENDE DE: assets/css/styles.css (cargado antes) */
+/* PROHIBIDO: redefinir .is-hidden, .wrapper, #main-nav o cualquier selector de styles.css */
+
+/* ============================================================
+   COMPONENTE: CARD
+   ============================================================ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0057b8;
+  margin-bottom: 0.4rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.card-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444444;
+  flex-grow: 1;
+}
+
+.card-meta {
+  font-size: 0.78rem;
+  color: #777777;
+  margin-top: 0.75rem;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0057b8;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   COMPONENTE: FAQ
+   ============================================================ */
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1a1a1a;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.faq-question::after {
+  content: '+';
+  float: right;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #0057b8;
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid #0057b8;
+  outline-offset: 2px;
+}
+
+.faq-answer {
+  padding: 0 0 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #444444;
+  border-top: 1px solid #f0f0f0;
+}
+
+.faq-item.is-open .faq-question::after {
+  content: '−';
+}
+
+/* ============================================================
+   COMPONENTE: COOKIE BANNER
+   ============================================================ */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(20, 20, 20, 0.95);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cookie-banner__text {
+  flex: 1 1 60%;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #f0f0f0;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cookie-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  transition: background 0.15s ease;
+}
+
+.cookie-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cookie-btn--accept {
+  background: #0057b8;
+  border-color: #0057b8;
+  color: #ffffff;
+}
+
+.cookie-btn--accept:hover {
+  background: #004099;
+  border-color: #004099;
+}
+
+/* ============================================================
+   FALLBACK: Ocultar banner si body tiene .is-accepted
+   (analytics.js agrega esta clase al aceptar cookies)
+   ============================================================ */
+
+body.is-accepted #cookie-banner {
+  display: none;
+}

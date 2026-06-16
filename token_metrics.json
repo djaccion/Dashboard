@@ -1,42 +1,42 @@
 {
-  "tokens_input": 80312,
-  "tokens_output": 48566,
-  "tokens_total": 128878,
-  "estimated_hours": 19.2,
-  "squad_days_equivalent": 2.4,
+  "tokens_input": 113868,
+  "tokens_output": 45599,
+  "tokens_total": 159467,
+  "estimated_hours": 32.3,
+  "squad_days_equivalent": 4.1,
   "hours_by_agent": {
     "arquitecto": {
       "hours": 1.5,
       "calls": 1,
       "hoursPerCall": 1.5,
-      "volumeMultiplier": 1,
-      "tokens": 2365
+      "volumeMultiplier": 1.02,
+      "tokens": 2764
     },
     "tech_lead": {
-      "hours": 5.7,
-      "calls": 4,
+      "hours": 15.1,
+      "calls": 9,
       "hoursPerCall": 0.8,
-      "volumeMultiplier": 1.77,
-      "tokens": 21872
+      "volumeMultiplier": 2.09,
+      "tokens": 54017
     },
     "desarrollador": {
-      "hours": 6.5,
-      "calls": 6,
+      "hours": 8.6,
+      "calls": 8,
       "hoursPerCall": 0.5,
-      "volumeMultiplier": 2.17,
-      "tokens": 66119
+      "volumeMultiplier": 2.16,
+      "tokens": 65157
     },
     "qa": {
-      "hours": 5.5,
-      "calls": 7,
+      "hours": 7.1,
+      "calls": 9,
       "hoursPerCall": 0.4,
-      "volumeMultiplier": 1.97,
-      "tokens": 38522
+      "volumeMultiplier": 1.96,
+      "tokens": 37529
     }
   },
   "modelo": "claude-sonnet-4-6",
   "skills_loaded": true,
-  "skills_count": 5,
+  "skills_count": 4,
   "skills_roles": [
     {
       "role": "arquitecto",
@@ -57,44 +57,33 @@
       "role": "qa",
       "skill_id": "GLX-QA-VALIDACION-V1",
       "skill_name": "test"
-    },
-    {
-      "role": "desarrollador_backend",
-      "skill_id": "GLX-DESARROLLO_BACKEND-API-V1",
-      "skill_name": "DESARROLLO_BACKEND-API"
     }
   ],
-  "timestamp": "2026-06-11T15:30:12.432Z",
+  "timestamp": "2026-06-16T17:24:10.237Z",
   "by_agent": {
     "arquitecto": {
       "input": 910,
-      "output": 1455,
+      "output": 1854,
       "calls": 1,
       "skill_name": "DISEÑO-ARQUITECTURA"
     },
     "tech_lead": {
-      "input": 12372,
-      "output": 9500,
-      "calls": 4,
+      "input": 33901,
+      "output": 20116,
+      "calls": 9,
       "skill_name": "MICROPLANIFICACION-DISEÑO"
     },
     "desarrollador": {
-      "input": 38800,
-      "output": 27319,
-      "calls": 6,
+      "input": 50646,
+      "output": 14511,
+      "calls": 8,
       "skill_name": "FRONTEND-DESARROLLO"
     },
     "qa": {
-      "input": 28230,
-      "output": 10292,
-      "calls": 7,
+      "input": 28411,
+      "output": 9118,
+      "calls": 9,
       "skill_name": "test"
-    },
-    "desarrollador_backend": {
-      "input": 0,
-      "output": 0,
-      "calls": 0,
-      "skill_name": "DESARROLLO_BACKEND-API"
     }
   }
 }

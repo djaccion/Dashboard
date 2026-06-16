@@ -3,389 +3,328 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explora metodologías de informática y TI: Scrum, Kanban, ITIL y más. Historias, noticias y recursos editoriales para profesionales TI.">
-
+  <meta name="description" content="Metodologías de informática y TI: artículos, historias y noticias del sector tecnológico.">
+  <meta name="robots" content="index, follow">
   <title>Metodologías TI</title>
-
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net 'unsafe-inline';
-                 style-src 'self' 'unsafe-inline';
-                 img-src 'self' https://placehold.co data:;
-                 connect-src https://www.google-analytics.com;">
-
-  <link rel="stylesheet" href="assets/css/styles.css">
-
-  <!-- DOMPurify desde CDN — SRI omitido intencionalmente: el hash real debe obtenerse
-       de https://www.srihash.org/ para dompurify@3.1.6 antes de desplegar a producción.
-       Placeholder: integrity="sha384-REEMPLAZAR-CON-HASH-REAL-DE-SRIHASH-ORG" -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"
-          crossorigin="anonymous"></script>
-
-  <!-- Google Analytics GA4 — snippet estándar -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <script
+    src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"
+    integrity="sha256-jtMDYPbFEFVFmxHiudBt7TUQZS9UMFzqMoF3MZJX+aU="
+    crossorigin="anonymous"
+    defer>
   </script>
 </head>
 <body>
 
-  <header role="banner">
-    <div class="header-inner">
-      <a href="#home" class="site-logo" aria-label="Ir al inicio — Metodologías TI">
-        Metodologías TI
-      </a>
+  <header>
+    <nav id="main-nav" aria-label="Navegación principal">
+      <a href="#home" class="nav-brand">Metodologías TI</a>
 
-      <nav id="nav-main" aria-label="Navegación principal">
-        <ul role="list">
-          <li>
-            <a href="#home"
-               id="nav-link-home"
-               class="nav-link is-active"
-               data-target="home"
-               aria-current="page">
-              Inicio
-            </a>
-          </li>
-          <li>
-            <a href="#historias"
-               id="nav-link-historias"
-               class="nav-link"
-               data-target="historias">
-              Historias
-            </a>
-          </li>
-          <li>
-            <a href="#noticias"
-               id="nav-link-noticias"
-               class="nav-link"
-               data-target="noticias">
-              Noticias
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <button id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <ul id="nav-links" class="is-hidden" role="list">
+        <li><a href="#home"      class="nav-link is-active" data-section="home">Inicio</a></li>
+        <li><a href="#historias" class="nav-link"            data-section="historias">Historias</a></li>
+        <li><a href="#noticias"  class="nav-link"            data-section="noticias">Noticias</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main id="main-content">
 
-    <!-- PANEL HOME — visible por defecto, SIN atributo hidden -->
-    <section id="section-home" class="section-panel" aria-labelledby="home-heading">
-      <h1 id="home-heading">Bienvenido a Metodologías TI</h1>
-      <p>
-        Tu referencia editorial sobre las metodologías que transforman la industria tecnológica.
-        Descubre cómo Scrum, Kanban, ITIL, DevOps y otras prácticas están redefiniendo la forma
-        en que los equipos de TI diseñan, entregan y mantienen soluciones digitales en el mundo actual.
-      </p>
-      <p>
-        Explora nuestras historias de éxito, mantente al día con las últimas noticias del sector
-        y encuentra respuestas a las preguntas más frecuentes sobre adopción de metodologías ágiles
-        y marcos de gestión de servicios TI.
-      </p>
+    <section id="section-home" aria-labelledby="home-heading">
+      <div class="section-header">
+        <h1 id="home-heading">Metodologías de Informática y TI</h1>
+        <p class="section-intro">
+          Explora los marcos de trabajo, procesos y buenas prácticas que definen
+          el desarrollo de software y la gestión tecnológica moderna.
+        </p>
+      </div>
 
-      <!-- Buscador — sanitización manejada por main.js con DOMPurify -->
-      <form id="form-search" role="search" novalidate>
-        <label for="input-search">Buscar metodología</label>
-        <input type="search"
-               id="input-search"
-               name="q"
-               autocomplete="off"
-               aria-describedby="search-error-msg"
-               placeholder="Ej: Scrum, Kanban, ITIL...">
-        <button type="submit" id="btn-search-submit">Buscar</button>
-        <!-- Mensaje de error — class="is-visible" es la clase que main.js agrega cuando hay error.
-             style="display:none" es el ocultamiento inicial según el contrato del Tech Lead (Paso 3).
-             main.js gestiona la visibilidad agregando/quitando .is-visible -->
-        <span id="search-error-msg"
-              class="is-visible"
-              role="alert"
-              aria-live="polite"
-              style="display:none">
-          Por favor, introduce al menos 2 caracteres para buscar.
-        </span>
-      </form>
+      <div class="section-grid">
 
-      <!-- Resultados de búsqueda — main.js inyecta contenido aquí -->
-      <div id="search-results" aria-live="polite" aria-atomic="true"></div>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Metodología Agile" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Metodología</span>
+            <h2 class="card-title">Agile</h2>
+            <p>Marco iterativo centrado en la entrega continua de valor y la adaptación al cambio.</p>
+            <a href="#historias" class="card-link" data-section="historias">Leer más</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Metodología Scrum" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Framework</span>
+            <h2 class="card-title">Scrum</h2>
+            <p>Estructura de sprints y roles definidos para equipos de desarrollo de software.</p>
+            <a href="#historias" class="card-link" data-section="historias">Leer más</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Metodología DevOps" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Práctica</span>
+            <h2 class="card-title">DevOps</h2>
+            <p>Integración de desarrollo y operaciones para ciclos de entrega más rápidos y confiables.</p>
+            <a href="#noticias" class="card-link" data-section="noticias">Leer más</a>
+          </div>
+        </article>
+
+      </div>
+
+      <section id="section-faq" aria-labelledby="faq-heading">
+        <div class="section-header">
+          <h2 id="faq-heading">Preguntas Frecuentes</h2>
+          <p class="section-intro">
+            Resolvemos las dudas más comunes sobre metodologías de desarrollo y gestión TI.
+          </p>
+        </div>
+
+        <ul class="faq-list" role="list">
+
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Qué es una metodología de desarrollo de software?
+            </button>
+            <div class="faq-answer is-hidden">
+              <p>Una metodología de desarrollo de software es un conjunto estructurado de prácticas, principios y procesos que guían la planificación, ejecución y entrega de proyectos de software. Define cómo los equipos organizan su trabajo, gestionan los cambios y aseguran la calidad del producto final.</p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Cuál es la diferencia entre Agile y Scrum?
+            </button>
+            <div class="faq-answer is-hidden">
+              <p>Agile es un conjunto de valores y principios filosóficos para el desarrollo de software, definidos en el Manifiesto Ágil. Scrum, en cambio, es un framework concreto que implementa esos principios mediante roles específicos (Product Owner, Scrum Master, equipo de desarrollo), eventos (sprints, daily standups) y artefactos (backlog, incremento).</p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿DevOps es una metodología o una cultura?
+            </button>
+            <div class="faq-answer is-hidden">
+              <p>DevOps es principalmente una cultura y un conjunto de prácticas que busca eliminar las barreras entre los equipos de desarrollo (Dev) y operaciones (Ops). Aunque incluye herramientas y procesos concretos como CI/CD, infraestructura como código y monitorización continua, su núcleo es el cambio cultural hacia la colaboración y la responsabilidad compartida.</p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Qué metodología es mejor para equipos pequeños?
+            </button>
+            <div class="faq-answer is-hidden">
+              <p>Para equipos pequeños (2-8 personas), Kanban o Scrum simplificado suelen ser las opciones más efectivas. Kanban ofrece flexibilidad sin la rigidez de los sprints, mientras que Scrum aporta estructura y cadencia. La elección depende del tipo de trabajo: Kanban es ideal para flujos continuos de soporte o mantenimiento, y Scrum para proyectos con entregas iterativas definidas.</p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Cómo empezar a implementar una metodología ágil?
+            </button>
+            <div class="faq-answer is-hidden">
+              <p>El primer paso es formar al equipo en los principios ágiles y elegir un framework concreto (Scrum o Kanban son los más accesibles). Luego, definir un backlog inicial de tareas, establecer un ritmo de trabajo (sprints de 1-2 semanas) y celebrar retrospectivas regulares para mejorar continuamente. Lo más importante es empezar de forma sencilla y adaptar el proceso a las necesidades reales del equipo.</p>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
     </section>
 
-    <!-- PANEL HISTORIAS — oculto por defecto con atributo hidden -->
-    <section id="section-historias" class="section-panel" hidden aria-labelledby="historias-heading">
-      <h2 id="historias-heading">Historias</h2>
+    <section id="section-historias" hidden="" class="is-hidden" aria-labelledby="historias-heading">
+      <div class="section-header">
+        <h2 id="historias-heading">Historias</h2>
+        <p class="section-intro">
+          Casos reales y experiencias de equipos que transformaron su forma de trabajar
+          adoptando metodologías TI.
+        </p>
+      </div>
 
-      <div class="cards-grid">
+      <div class="section-grid">
 
-        <article class="card-historia">
-          <img src="https://placehold.co/600x400"
-               alt="Equipo de desarrollo aplicando Scrum en una pizarra de sprints"
-               width="600" height="400" loading="lazy">
-          <div class="card-historia__body">
-            <h3>Cómo Scrum transformó el equipo de desarrollo de una fintech</h3>
-            <p>
-              Una startup financiera con ciclos de entrega de seis meses adoptó Scrum y redujo
-              su time-to-market a tres semanas. Esta es la historia de su transformación cultural
-              y técnica, los obstáculos que enfrentaron y las lecciones que aprendieron.
-            </p>
-            <a href="#" class="card-historia__link">Leer más</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: Transformación Agile en empresa mediana" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Caso de Estudio</span>
+            <h3 class="card-title">De Waterfall a Agile en 6 meses</h3>
+            <p class="card-meta">Por Ana García · 12 Jun 2025</p>
+            <p>Cómo un equipo de 15 personas migró su proceso de desarrollo sin detener la producción.</p>
+            <a href="#" class="card-link">Leer historia</a>
           </div>
         </article>
 
-        <article class="card-historia">
-          <img src="https://placehold.co/600x400"
-               alt="Tablero Kanban digital con tarjetas de tareas en progreso"
-               width="600" height="400" loading="lazy">
-          <div class="card-historia__body">
-            <h3>Kanban en operaciones: el caso de un equipo de soporte TI</h3>
-            <p>
-              El departamento de soporte de una empresa de telecomunicaciones implementó Kanban
-              para visualizar su flujo de trabajo. En tres meses, el tiempo de resolución de
-              incidencias se redujo un 40% y la satisfacción del cliente alcanzó máximos históricos.
-            </p>
-            <a href="#" class="card-historia__link">Leer más</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: Implementación de Scrum en startup" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Experiencia</span>
+            <h3 class="card-title">Scrum en una startup de 5 personas</h3>
+            <p class="card-meta">Por Carlos Méndez · 3 Jun 2025</p>
+            <p>Lecciones aprendidas al aplicar Scrum en un equipo reducido con recursos limitados y alta presión de entrega.</p>
+            <a href="#" class="card-link">Leer historia</a>
           </div>
         </article>
 
-        <article class="card-historia">
-          <img src="https://placehold.co/600x400"
-               alt="Diagrama de flujo de procesos ITIL en una pantalla de sala de operaciones"
-               width="600" height="400" loading="lazy">
-          <div class="card-historia__body">
-            <h3>ITIL 4 en el sector público: modernizando la gestión de servicios</h3>
-            <p>
-              Una administración pública regional adoptó ITIL 4 para estandarizar la gestión
-              de sus servicios digitales. El proceso de certificación, los retos de cambio
-              organizacional y los resultados medibles un año después de la implementación.
-            </p>
-            <a href="#" class="card-historia__link">Leer más</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: DevOps en empresa de logística" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Transformación</span>
+            <h3 class="card-title">DevOps en el sector logístico</h3>
+            <p class="card-meta">Por Laura Sánchez · 28 May 2025</p>
+            <p>Una empresa de logística redujo su tiempo de despliegue de semanas a horas adoptando prácticas DevOps.</p>
+            <a href="#" class="card-link">Leer historia</a>
           </div>
         </article>
 
-        <article class="card-historia">
-          <img src="https://placehold.co/600x400"
-               alt="Pipeline de integración continua y despliegue continuo en pantalla de desarrollador"
-               width="600" height="400" loading="lazy">
-          <div class="card-historia__body">
-            <h3>DevOps de cero a producción: la travesía de un equipo de e-commerce</h3>
-            <p>
-              Una plataforma de comercio electrónico pasó de despliegues manuales mensuales
-              a pipelines CI/CD automatizados con múltiples releases diarios. Descubre cómo
-              estructuraron su cultura DevOps y qué herramientas eligieron en cada etapa.
-            </p>
-            <a href="#" class="card-historia__link">Leer más</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: Kanban en equipo de soporte" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Caso de Estudio</span>
+            <h3 class="card-title">Kanban para gestión de soporte técnico</h3>
+            <p class="card-meta">Por Miguel Torres · 20 May 2025</p>
+            <p>Cómo un equipo de soporte mejoró su tiempo de respuesta en un 40% visualizando su flujo de trabajo con Kanban.</p>
+            <a href="#" class="card-link">Leer historia</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: SAFe en organización grande" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Escalado</span>
+            <h3 class="card-title">Escalando Agile con SAFe en 200 personas</h3>
+            <p class="card-meta">Por Elena Ruiz · 15 May 2025</p>
+            <p>El reto de coordinar múltiples equipos ágiles en una organización grande usando el framework SAFe.</p>
+            <a href="#" class="card-link">Leer historia</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Historia: Lean en desarrollo de producto" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Metodología</span>
+            <h3 class="card-title">Lean Startup aplicado al desarrollo de producto</h3>
+            <p class="card-meta">Por David Fernández · 8 May 2025</p>
+            <p>Cómo el ciclo construir-medir-aprender permitió a un equipo validar su producto antes de invertir en desarrollo completo.</p>
+            <a href="#" class="card-link">Leer historia</a>
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- PANEL NOTICIAS — oculto por defecto con atributo hidden -->
-    <section id="section-noticias" class="section-panel" hidden aria-labelledby="noticias-heading">
-      <h2 id="noticias-heading">Noticias</h2>
+    <section id="section-noticias" hidden="" class="is-hidden" aria-labelledby="noticias-heading">
+      <div class="section-header">
+        <h2 id="noticias-heading">Noticias</h2>
+        <p class="section-intro">
+          Las últimas tendencias, herramientas y novedades del mundo de las metodologías
+          y la gestión tecnológica.
+        </p>
+      </div>
 
-      <div class="cards-grid">
+      <div class="section-grid">
 
-        <article class="card-noticia">
-          <img src="https://placehold.co/600x400"
-               alt="Portada del informe anual del estado de Agile 2024"
-               width="600" height="400" loading="lazy">
-          <div class="card-noticia__body">
-            <h3>El informe State of Agile 2024 revela un aumento en la adopción de SAFe</h3>
-            <time datetime="2024-11-15">15 de noviembre de 2024</time>
-            <p>
-              El informe anual sobre el estado de Agile muestra que el 37% de las organizaciones
-              encuestadas han adoptado SAFe como marco de escalado, consolidándolo como el más
-              utilizado por tercer año consecutivo. Analizamos sus implicaciones para los equipos TI.
-            </p>
-            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: Tendencias Agile 2025" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Tendencias</span>
+            <h3 class="card-title">Las 5 tendencias Agile que marcarán 2025</h3>
+            <p class="card-meta">Redacción · 10 Jun 2025</p>
+            <p>IA generativa en la planificación de sprints, equipos distribuidos y la evolución del rol del Scrum Master centran el debate este año.</p>
+            <a href="#" class="card-link">Leer noticia</a>
           </div>
         </article>
 
-        <article class="card-noticia">
-          <img src="https://placehold.co/600x400"
-               alt="Logo de AXELOS junto al texto ITIL 4 Foundation actualización 2024"
-               width="600" height="400" loading="lazy">
-          <div class="card-noticia__body">
-            <h3>AXELOS actualiza el esquema de certificación ITIL 4 con nuevos módulos prácticos</h3>
-            <time datetime="2024-10-03">3 de octubre de 2024</time>
-            <p>
-              AXELOS ha anunciado la incorporación de tres nuevos módulos de práctica al esquema
-              ITIL 4, enfocados en gestión de activos digitales, sostenibilidad TI y resiliencia
-              de servicios. Las certificaciones actualizadas estarán disponibles desde enero de 2025.
-            </p>
-            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: GitHub Copilot y DevOps" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Herramientas</span>
+            <h3 class="card-title">GitHub Copilot transforma los pipelines DevOps</h3>
+            <p class="card-meta">Redacción · 5 Jun 2025</p>
+            <p>La integración de asistentes de IA en los flujos CI/CD está redefiniendo cómo los equipos gestionan la calidad y la velocidad de entrega.</p>
+            <a href="#" class="card-link">Leer noticia</a>
           </div>
         </article>
 
-        <article class="card-noticia">
-          <img src="https://placehold.co/600x400"
-               alt="Gráfico de tendencias de adopción de metodologías ágiles en Latinoamérica"
-               width="600" height="400" loading="lazy">
-          <div class="card-noticia__body">
-            <h3>Latinoamérica acelera la adopción de metodologías ágiles en el sector bancario</h3>
-            <time datetime="2024-09-20">20 de septiembre de 2024</time>
-            <p>
-              Un estudio regional publicado por la consultora IDC revela que el 62% de los bancos
-              latinoamericanos han iniciado transformaciones ágiles formales en los últimos dos años,
-              con Brasil y México liderando la adopción de marcos híbridos Scrum-Kanban.
-            </p>
-            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: Informe State of Agile 2025" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Informe</span>
+            <h3 class="card-title">State of Agile 2025: Scrum sigue dominando</h3>
+            <p class="card-meta">Redacción · 1 Jun 2025</p>
+            <p>El informe anual confirma que Scrum es el framework más adoptado globalmente, aunque Kanban gana terreno en equipos de operaciones.</p>
+            <a href="#" class="card-link">Leer noticia</a>
           </div>
         </article>
 
-        <article class="card-noticia">
-          <img src="https://placehold.co/600x400"
-               alt="Conferencia DevOps Days con ponentes en escenario"
-               width="600" height="400" loading="lazy">
-          <div class="card-noticia__body">
-            <h3>DevOps Days Madrid 2024: los cinco temas que dominaron la agenda</h3>
-            <time datetime="2024-09-05">5 de septiembre de 2024</time>
-            <p>
-              La edición madrileña de DevOps Days reunió a más de 800 profesionales TI. La IA
-              aplicada a pipelines CI/CD, la observabilidad como práctica cultural y la seguridad
-              shift-left fueron los ejes centrales de las sesiones más concurridas del evento.
-            </p>
-            <a href="#" class="card-noticia__link">Leer noticia completa</a>
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: Platform Engineering" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Innovación</span>
+            <h3 class="card-title">Platform Engineering: el sucesor de DevOps</h3>
+            <p class="card-meta">Redacción · 25 May 2025</p>
+            <p>Cada vez más organizaciones crean equipos de plataforma internos para abstraer la complejidad de infraestructura y acelerar a los equipos de producto.</p>
+            <a href="#" class="card-link">Leer noticia</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: Certificaciones PMP y PMI" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Formación</span>
+            <h3 class="card-title">PMP 2025: cambios en el examen de certificación</h3>
+            <p class="card-meta">Redacción · 18 May 2025</p>
+            <p>El PMI actualiza el contenido del examen PMP para reflejar la creciente adopción de enfoques híbridos entre metodologías predictivas y ágiles.</p>
+            <a href="#" class="card-link">Leer noticia</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://placehold.co/400x200" alt="Noticia: FinOps y gestión de costes cloud" width="400" height="200" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">Gestión</span>
+            <h3 class="card-title">FinOps: la metodología que controla el gasto cloud</h3>
+            <p class="card-meta">Redacción · 12 May 2025</p>
+            <p>Con el aumento del gasto en infraestructura cloud, FinOps emerge como disciplina clave para alinear ingeniería, finanzas y negocio en la toma de decisiones.</p>
+            <a href="#" class="card-link">Leer noticia</a>
           </div>
         </article>
 
       </div>
-    </section>
-
-    <!-- SECCIÓN FAQ — siempre visible, no es un panel de navegación -->
-    <section id="section-faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Preguntas Frecuentes</h2>
-
-      <ul id="faq-list" role="list">
-
-        <li class="faq-item is-closed">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-            ¿Qué es una metodología ágil y en qué se diferencia de las metodologías tradicionales?
-          </button>
-          <div id="faq-answer-1" class="faq-answer" role="region">
-            <p>
-              Las metodologías ágiles son marcos de trabajo iterativos e incrementales que priorizan
-              la entrega continua de valor, la colaboración con el cliente y la adaptación al cambio.
-              A diferencia de las metodologías tradicionales (como Waterfall), que planifican todo
-              el proyecto al inicio y ejecutan en fases secuenciales, las metodologías ágiles dividen
-              el trabajo en ciclos cortos (sprints o iteraciones) que permiten ajustar el rumbo
-              basándose en feedback real y continuo.
-            </p>
-          </div>
-        </li>
-
-        <li class="faq-item is-closed">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-            ¿Cuál es la diferencia entre Scrum y Kanban?
-          </button>
-          <div id="faq-answer-2" class="faq-answer" role="region">
-            <p>
-              Scrum es un marco prescriptivo con roles definidos (Product Owner, Scrum Master, equipo
-              de desarrollo), eventos fijos (sprints de 1-4 semanas, daily standups, retrospectivas)
-              y artefactos concretos (product backlog, sprint backlog). Kanban, en cambio, es un método
-              de gestión del flujo de trabajo más flexible: visualiza el trabajo en un tablero,
-              limita el trabajo en progreso (WIP) y optimiza el flujo continuo sin sprints ni roles
-              obligatorios. Scrum es ideal para equipos de producto con backlog priorizado; Kanban
-              encaja mejor en equipos de operaciones o soporte con trabajo continuo e impredecible.
-            </p>
-          </div>
-        </li>
-
-        <li class="faq-item is-closed">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-            ¿Qué es ITIL y para qué tipo de organizaciones es relevante?
-          </button>
-          <div id="faq-answer-3" class="faq-answer" role="region">
-            <p>
-              ITIL (Information Technology Infrastructure Library) es un marco de mejores prácticas
-              para la gestión de servicios TI (ITSM). Define cómo las organizaciones deben diseñar,
-              entregar, gestionar y mejorar continuamente sus servicios tecnológicos. Es especialmente
-              relevante para departamentos TI internos, proveedores de servicios gestionados (MSP)
-              y cualquier organización donde TI sea un habilitador crítico del negocio. ITIL 4,
-              la versión actual, integra principios ágiles y DevOps para adaptarse a entornos
-              digitales modernos.
-            </p>
-          </div>
-        </li>
-
-        <li class="faq-item is-closed">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
-            ¿Puedo combinar varias metodologías en un mismo equipo?
-          </button>
-          <div id="faq-answer-4" class="faq-answer" role="region">
-            <p>
-              Sí. Los enfoques híbridos son cada vez más comunes. Por ejemplo, muchos equipos usan
-              Scrum para el desarrollo de producto y Kanban para la gestión de bugs y soporte.
-              Otros combinan ITIL para la gestión de servicios con Scrum para el desarrollo interno.
-              La clave es entender qué problema resuelve cada metodología y aplicarla donde aporte
-              valor real, evitando la adopción ceremonial que genera burocracia sin beneficio.
-            </p>
-          </div>
-        </li>
-
-        <li class="faq-item is-closed">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
-            ¿Qué certificaciones son más valoradas en el mercado TI actualmente?
-          </button>
-          <div id="faq-answer-5" class="faq-answer" role="region">
-            <p>
-              Las certificaciones más demandadas varían según el rol. Para gestión de proyectos ágiles:
-              Professional Scrum Master (PSM) y PMI-ACP. Para gestión de servicios TI: ITIL 4 Foundation
-              es el punto de entrada estándar. Para DevOps: las certificaciones de plataformas cloud
-              (AWS, Azure, GCP) combinadas con conocimientos de CI/CD tienen alta demanda. Para
-              escalado ágil: SAFe Agilist (SA) y LeSS Practitioner son referencias en grandes
-              organizaciones. Se recomienda priorizar la experiencia práctica sobre la acumulación
-              de certificaciones.
-            </p>
-          </div>
-        </li>
-
-      </ul>
     </section>
 
   </main>
 
-  <footer role="contentinfo">
-    <div class="footer-inner">
-      <p>
-        &copy; 2024 Metodologías TI. Contenido editorial con fines informativos.
-      </p>
-      <nav aria-label="Navegación secundaria del pie de página">
-        <ul role="list">
-          <li><a href="#home" class="nav-link" data-target="home">Inicio</a></li>
-          <li><a href="#historias" class="nav-link" data-target="historias">Historias</a></li>
-          <li><a href="#noticias" class="nav-link" data-target="noticias">Noticias</a></li>
-        </ul>
-      </nav>
-    </div>
+  <footer id="main-footer">
+    <p>&copy; 2025 Metodologías TI. Todos los derechos reservados.</p>
+    <nav aria-label="Navegación secundaria">
+      <a href="#home" class="nav-link" data-section="home">Inicio</a>
+      <a href="#historias" class="nav-link" data-section="historias">Historias</a>
+      <a href="#noticias" class="nav-link" data-section="noticias">Noticias</a>
+    </nav>
   </footer>
 
-  <!-- BANNER DE COOKIES — usa .is-hidden para visibilidad (NO atributo hidden) -->
-  <div id="banner-cookies"
-       class="overlay cookie-banner"
-       role="dialog"
-       aria-modal="true"
-       aria-labelledby="cookies-heading"
-       aria-describedby="cookies-desc">
-    <div class="cookie-banner__inner">
-      <h2 id="cookies-heading" class="sr-only">Aviso de cookies</h2>
-      <p id="cookies-desc">
-        Utilizamos cookies propias y de terceros (Google Analytics) para analizar el uso del sitio
-        y mejorar tu experiencia. Puedes aceptar todas las cookies o rechazar las no esenciales.
-        Consulta nuestra política de privacidad para más información.
-      </p>
-      <div class="cookie-banner__actions">
-        <button id="btn-accept-cookies" type="button">Aceptar todas</button>
-        <button id="btn-reject-cookies" type="button">Rechazar no esenciales</button>
-      </div>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <p class="cookie-banner__text">
+      Usamos cookies propias y de terceros para analizar el tráfico y mejorar tu experiencia.
+      Puedes aceptar todas las cookies o rechazar las no esenciales.
+      Consulta nuestra <a href="#home">política de privacidad</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-accept-btn" class="cookie-btn cookie-btn--accept">Aceptar todas</button>
+      <button id="cookie-reject-btn" class="cookie-btn">Rechazar no esenciales</button>
     </div>
   </div>
 
-  <!-- ÚNICO archivo JS del proyecto -->
-  <script src="assets/js/main.js"></script>
+  <script src="./assets/js/data/content.js" defer></script>
+  <script src="./assets/js/security.js" defer></script>
+  <script src="./assets/js/analytics.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
 
 </body>
 </html>
