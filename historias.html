@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Historias sobre metodologías de informática y TI">
+  <title>Historias — Metodologías TI</title>
+  <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <header id="site-header">
+    <a href="index.html" class="site-logo" aria-label="Inicio — Metodologías TI">
+      Metodologías TI
+    </a>
+    <nav id="site-nav" aria-label="Navegación principal">
+      <button id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="u-sr-only">Abrir menú</span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <ul id="nav-menu" role="list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="historias.html" class="is-active" aria-current="page">Historias</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="historias-section" aria-labelledby="historias-heading">
+
+      <h1 id="historias-heading">Historias</h1>
+
+      <div id="search-form-wrapper">
+        <form id="search-form" role="search" novalidate>
+          <label for="search-input" class="u-sr-only">Buscar historias</label>
+          <input
+            id="search-input"
+            type="search"
+            name="q"
+            placeholder="Buscar historias..."
+            autocomplete="off"
+            aria-describedby="search-results"
+          >
+          <button type="submit">Buscar</button>
+        </form>
+        <div id="search-results" aria-live="polite" aria-atomic="true"></div>
+      </div>
+
+      <div id="historias-grid">
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: El origen de Scrum: de la cancha de rugby a la oficina">
+            <h2 class="card__title">El origen de Scrum: de la cancha de rugby a la oficina</h2>
+            <p class="card__body">Cómo un artículo de 1986 sobre equipos de alto rendimiento inspiró uno de los marcos ágiles más adoptados en la industria del software.</p>
+            <footer class="card__meta">
+              <time datetime="2025-01-15">15 enero 2025</time>
+              <span>Ana García</span>
+            </footer>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: Kanban: del taller de Toyota al tablero digital">
+            <h2 class="card__title">Kanban: del taller de Toyota al tablero digital</h2>
+            <p class="card__body">La historia del sistema de producción ajustada que cruzó fronteras industriales y se convirtió en herramienta esencial para equipos de TI en todo el mundo.</p>
+            <footer class="card__meta">
+              <time datetime="2025-01-10">10 enero 2025</time>
+              <span>Carlos Méndez</span>
+            </footer>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: El Manifiesto Ágil: 17 personas, una cabaña y un cambio de paradigma">
+            <h2 class="card__title">El Manifiesto Ágil: 17 personas, una cabaña y un cambio de paradigma</h2>
+            <p class="card__body">En febrero de 2001, diecisiete desarrolladores se reunieron en Utah y redactaron cuatro valores que transformarían para siempre la forma de construir software.</p>
+            <footer class="card__meta">
+              <time datetime="2025-01-05">5 enero 2025</time>
+              <span>Laura Soto</span>
+            </footer>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: DevOps: cuando desarrollo y operaciones dejaron de ser enemigos">
+            <h2 class="card__title">DevOps: cuando desarrollo y operaciones dejaron de ser enemigos</h2>
+            <p class="card__body">La crónica de cómo la cultura de colaboración continua nació de la frustración y se convirtió en el estándar de entrega de software moderno.</p>
+            <footer class="card__meta">
+              <time datetime="2024-12-28">28 diciembre 2024</time>
+              <span>Roberto Vega</span>
+            </footer>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: Extreme Programming: el método que llevó las buenas prácticas al extremo">
+            <h2 class="card__title">Extreme Programming: el método que llevó las buenas prácticas al extremo</h2>
+            <p class="card__body">Kent Beck y la apuesta radical de hacer más de lo que funciona: más pruebas, más revisiones, más integración. La historia de XP y su legado en el desarrollo moderno.</p>
+            <footer class="card__meta">
+              <time datetime="2024-12-20">20 diciembre 2024</time>
+              <span>Marta Ruiz</span>
+            </footer>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link" aria-label="Leer: ITIL: el marco que ordenó el caos de los servicios TI">
+            <h2 class="card__title">ITIL: el marco que ordenó el caos de los servicios TI</h2>
+            <p class="card__body">Desde su origen en la administración pública británica hasta convertirse en el estándar global de gestión de servicios de tecnología de la información.</p>
+            <footer class="card__meta">
+              <time datetime="2024-12-12">12 diciembre 2024</time>
+              <span>Diego Paredes</span>
+            </footer>
+          </a>
+        </article>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; <span id="footer-year"></span> Metodologías TI. Todos los derechos reservados.</p>
+  </footer>
+
+  <div class="overlay" aria-hidden="true"></div>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-label="Aviso de cookies">
+    <p>Usamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Puedes aceptar todas las cookies o rechazar las no esenciales.</p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-accept-btn" type="button">Aceptar todas</button>
+      <button id="cookie-reject-btn" type="button">Rechazar no esenciales</button>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+
+</body>
+</html>

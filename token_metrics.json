@@ -1,37 +1,37 @@
 {
-  "tokens_input": 113868,
-  "tokens_output": 45599,
-  "tokens_total": 159467,
-  "estimated_hours": 32.3,
-  "squad_days_equivalent": 4.1,
+  "tokens_input": 102456,
+  "tokens_output": 37649,
+  "tokens_total": 140105,
+  "estimated_hours": 18,
+  "squad_days_equivalent": 2.3,
   "hours_by_agent": {
     "arquitecto": {
       "hours": 1.5,
       "calls": 1,
       "hoursPerCall": 1.5,
-      "volumeMultiplier": 1.02,
-      "tokens": 2764
+      "volumeMultiplier": 1,
+      "tokens": 2342
     },
     "tech_lead": {
-      "hours": 15.1,
-      "calls": 9,
+      "hours": 5.6,
+      "calls": 4,
       "hoursPerCall": 0.8,
-      "volumeMultiplier": 2.09,
-      "tokens": 54017
+      "volumeMultiplier": 1.77,
+      "tokens": 21810
     },
     "desarrollador": {
-      "hours": 8.6,
-      "calls": 8,
+      "hours": 7.6,
+      "calls": 7,
       "hoursPerCall": 0.5,
       "volumeMultiplier": 2.16,
-      "tokens": 65157
+      "tokens": 65667
     },
     "qa": {
-      "hours": 7.1,
-      "calls": 9,
+      "hours": 3.3,
+      "calls": 4,
       "hoursPerCall": 0.4,
-      "volumeMultiplier": 1.96,
-      "tokens": 37529
+      "volumeMultiplier": 2.07,
+      "tokens": 50286
     }
   },
   "modelo": "claude-sonnet-4-6",
@@ -59,30 +59,30 @@
       "skill_name": "test"
     }
   ],
-  "timestamp": "2026-06-16T17:24:10.237Z",
+  "timestamp": "2026-06-19T21:23:07.729Z",
   "by_agent": {
     "arquitecto": {
       "input": 910,
-      "output": 1854,
+      "output": 1432,
       "calls": 1,
       "skill_name": "DISEÑO-ARQUITECTURA"
     },
     "tech_lead": {
-      "input": 33901,
-      "output": 20116,
-      "calls": 9,
+      "input": 12310,
+      "output": 9500,
+      "calls": 4,
       "skill_name": "MICROPLANIFICACION-DISEÑO"
     },
     "desarrollador": {
-      "input": 50646,
-      "output": 14511,
-      "calls": 8,
+      "input": 43841,
+      "output": 21826,
+      "calls": 7,
       "skill_name": "FRONTEND-DESARROLLO"
     },
     "qa": {
-      "input": 28411,
-      "output": 9118,
-      "calls": 9,
+      "input": 45395,
+      "output": 4891,
+      "calls": 4,
       "skill_name": "test"
     }
   }

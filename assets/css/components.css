@@ -1,188 +1,150 @@
-/* components.css — Estilos de componentes: Cards, FAQ, Cookie Banner */
-/* PROYECTO: XP-14 | DEPENDE DE: assets/css/styles.css (cargado antes) */
-/* PROHIBIDO: redefinir .is-hidden, .wrapper, #main-nav o cualquier selector de styles.css */
+/* === COMPONENT TOKENS === */
+:root {
+  --card-radius: 8px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --card-padding: 1.25rem;
+  --faq-transition: 0.25s ease;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --cookie-z: 1000;
+  --banner-radius: 10px;
+}
 
-/* ============================================================
-   COMPONENTE: CARD
-   ============================================================ */
-
+/* === CARD COMPONENT === */
 .card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  background-color: #ffffff;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
 }
 
 .card:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
 }
 
-.card-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #0057b8;
-  margin-bottom: 0.4rem;
-}
-
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #1a1a1a;
+.card__link {
   text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
-.card-body {
+.card__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card__body {
+  flex: 1;
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #444444;
-  flex-grow: 1;
 }
 
-.card-meta {
-  font-size: 0.78rem;
-  color: #777777;
-  margin-top: 0.75rem;
+.card__meta {
+  font-size: 0.8rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: #666;
 }
 
-.card-link {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #0057b8;
-  text-decoration: none;
-}
-
-.card-link:hover {
-  text-decoration: underline;
-}
-
-/* ============================================================
-   COMPONENTE: FAQ
-   ============================================================ */
-
-.faq-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+/* === FAQ ACCORDION COMPONENT === */
 .faq-item {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.faq-question {
-  display: block;
+.faq-item__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: 1rem 0;
   background: none;
   border: none;
+  cursor: pointer;
   text-align: left;
-  padding: 1rem 0;
   font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;
-  color: #1a1a1a;
-  appearance: none;
-  -webkit-appearance: none;
 }
 
-.faq-question::after {
+.faq-item__question::after {
   content: '+';
-  float: right;
-  font-weight: 700;
-  font-size: 1.1rem;
-  line-height: 1;
-  color: #0057b8;
+  font-size: 1.25rem;
+  transition: transform var(--faq-transition);
+  flex-shrink: 0;
 }
 
-.faq-question:focus-visible {
-  outline: 2px solid #0057b8;
-  outline-offset: 2px;
-}
-
-.faq-answer {
+.faq-item__answer {
+  display: none;
   padding: 0 0 1rem 0;
-  font-size: 0.9rem;
   line-height: 1.7;
-  color: #444444;
-  border-top: 1px solid #f0f0f0;
 }
 
-.faq-item.is-open .faq-question::after {
-  content: '−';
+.faq-item.is-open .faq-item__answer {
+  display: block;
 }
 
-/* ============================================================
-   COMPONENTE: COOKIE BANNER
-   ============================================================ */
+.faq-item.is-open .faq-item__question::after {
+  transform: rotate(45deg);
+}
 
-.cookie-banner {
+/* === OVERLAY COMPONENT === */
+.overlay {
+  display: none;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(20, 20, 20, 0.95);
-  color: #ffffff;
-  padding: 1rem 1.5rem;
-  z-index: 1000;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
+  inset: 0;
+  background-color: var(--overlay-bg);
+  z-index: 500;
 }
 
-.cookie-banner__text {
-  flex: 1 1 60%;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #f0f0f0;
+.overlay.is-visible {
+  display: block;
+}
+
+/* === COOKIE BANNER COMPONENT === */
+.cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 560px);
+  background-color: #ffffff;
+  border-radius: var(--banner-radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  padding: 1.25rem 1.5rem;
+  z-index: var(--cookie-z);
+}
+
+.cookie-banner.is-visible {
+  display: block;
 }
 
 .cookie-banner__actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
-.cookie-btn {
-  padding: 0.5rem 1.1rem;
+.cookie-banner__actions button {
+  padding: 0.5rem 1.25rem;
   border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border: none;
   cursor: pointer;
-  border: 1px solid #ffffff;
-  background: transparent;
-  color: #ffffff;
-  transition: background 0.15s ease;
+  font-size: 0.9rem;
 }
 
-.cookie-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+#cookie-accept-btn {
+  background-color: #2563eb;
+  color: #fff;
 }
 
-.cookie-btn--accept {
-  background: #0057b8;
-  border-color: #0057b8;
-  color: #ffffff;
-}
-
-.cookie-btn--accept:hover {
-  background: #004099;
-  border-color: #004099;
-}
-
-/* ============================================================
-   FALLBACK: Ocultar banner si body tiene .is-accepted
-   (analytics.js agrega esta clase al aceptar cookies)
-   ============================================================ */
-
-body.is-accepted #cookie-banner {
-  display: none;
+#cookie-reject-btn {
+  background-color: transparent;
+  border: 1px solid currentColor;
 }

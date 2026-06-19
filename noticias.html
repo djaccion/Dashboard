@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias — Metodologías TI</title>
+  <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <header id="site-header">
+    <a href="index.html" class="site-logo">
+      <span class="u-sr-only">Inicio — Metodologías TI</span>
+      MetodologíasTI
+    </a>
+
+    <nav id="site-nav" aria-label="Navegación principal">
+      <button id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="u-sr-only">Abrir menú</span>
+        <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect y="4" width="24" height="2" fill="currentColor"/>
+          <rect y="11" width="24" height="2" fill="currentColor"/>
+          <rect y="18" width="24" height="2" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <ul id="nav-menu" role="list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="historias.html">Historias</a></li>
+        <li><a href="noticias.html" class="is-active" aria-current="page">Noticias</a></li>
+      </ul>
+    </nav>
+
+    <div id="search-form-wrapper">
+      <form id="search-form" role="search" novalidate>
+        <label for="search-input" class="u-sr-only">Buscar en el sitio</label>
+        <input
+          id="search-input"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="Buscar noticias..."
+          aria-label="Buscar noticias"
+        >
+      </form>
+      <div id="search-results" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="noticias-section" aria-labelledby="noticias-heading">
+      <h1 id="noticias-heading">Noticias</h1>
+
+      <div id="noticias-grid">
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">Scrum cumple 30 años: evolución y vigencia en equipos modernos</h2>
+          </a>
+          <p class="card__body">
+            Desde su formalización en 1995, Scrum ha transformado la forma en que los equipos
+            de desarrollo entregan valor. Analizamos su trayectoria y los debates actuales
+            sobre su aplicación en entornos distribuidos.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-01-15">15 de enero de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">DevOps en 2025: las métricas DORA que todo equipo debería medir</h2>
+          </a>
+          <p class="card__body">
+            Las métricas DORA —frecuencia de despliegue, tiempo de entrega, tasa de fallos y
+            tiempo de recuperación— siguen siendo el estándar de referencia para evaluar
+            la madurez de las prácticas DevOps en organizaciones de cualquier tamaño.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-01-22">22 de enero de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">Kanban vs Scrum: cuándo elegir cada metodología ágil</h2>
+          </a>
+          <p class="card__body">
+            La elección entre Kanban y Scrum no es una cuestión de moda sino de contexto.
+            Exploramos los criterios clave —cadencia de entrega, tamaño del equipo y
+            naturaleza del trabajo— para tomar la decisión correcta.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-02-03">3 de febrero de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">El auge de la Ingeniería de Plataformas como disciplina TI</h2>
+          </a>
+          <p class="card__body">
+            Platform Engineering emerge como respuesta a la fatiga de herramientas en equipos
+            DevOps maduros. Los Internal Developer Platforms (IDP) prometen reducir la carga
+            cognitiva y acelerar la incorporación de nuevos desarrolladores.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-02-17">17 de febrero de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">SAFe 6.0: qué cambia en el marco ágil escalado más adoptado</h2>
+          </a>
+          <p class="card__body">
+            La versión 6.0 del Scaled Agile Framework introduce el concepto de Business Agility
+            y refuerza el rol de los OKR como mecanismo de alineación estratégica. Revisamos
+            las novedades más relevantes para equipos que ya trabajan con SAFe.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-03-05">5 de marzo de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <a href="#" class="card__link">
+            <h2 class="card__title">Extreme Programming en la era de la IA: pair programming con asistentes de código</h2>
+          </a>
+          <p class="card__body">
+            Las prácticas de XP como el pair programming y el TDD adquieren una nueva dimensión
+            con la irrupción de los asistentes de código basados en IA. Analizamos cómo los
+            equipos están adaptando estas técnicas sin perder su esencia colaborativa.
+          </p>
+          <p class="card__meta">
+            <time datetime="2025-03-19">19 de marzo de 2025</time>
+            · <span>Redacción</span>
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; <span id="footer-year"></span> MetodologíasTI. Todos los derechos reservados.</p>
+  </footer>
+
+  <aside
+    id="cookie-banner"
+    class="cookie-banner"
+    role="region"
+    aria-label="Aviso de cookies"
+    aria-hidden="true"
+  >
+    <p>
+      Usamos cookies para mejorar tu experiencia y analizar el tráfico del sitio.
+      Consulta nuestra <a href="#">política de privacidad</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-accept-btn" type="button">Aceptar</button>
+      <button id="cookie-reject-btn" type="button">Rechazar</button>
+    </div>
+  </aside>
+
+  <div class="overlay" aria-hidden="true"></div>
+
+  <script defer src="assets/js/vendor/dompurify.min.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/search.js"></script>
+
+</body>
+</html>
